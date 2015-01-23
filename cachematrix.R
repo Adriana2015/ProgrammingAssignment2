@@ -4,6 +4,10 @@
 ## this function creates a special matrix
 
 makeCacheMatrix <- function(x = matrix()) {
+  
+  if (nrow(x)!=ncol(x)){
+    stop ("the matrix is not square, find another matrix")
+  }
   inv <- NULL
   set <- function(y) {
     x <<- y
@@ -20,6 +24,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+
   inv <- x$getinverse()
   if(!is.null(inv)) {
     message("getting cached data")
@@ -30,3 +35,4 @@ cacheSolve <- function(x, ...) {
   x$setinverse(inv)
   inv
 }
+
